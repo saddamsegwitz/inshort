@@ -13,7 +13,7 @@ use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
-    public function login(LoginRequest $request)
+    public function signUp(LoginRequest $request)
     {
         $data = $request->validated();
         $user = User::whereStatus(1)

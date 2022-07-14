@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'middleware' => ['jsonify']], function () {
     Route::group(['prefix' => 'auth', 'middleware' => 'throttle:10,1', 'as' => 'auth.'], function () {
-        Route::post('register', [AuthController::class, 'register'])->name('register');
+        Route::post('sign-up', [AuthController::class, 'signUp'])->name('signup');
         Route::post('login', [AuthController::class, 'login'])->name('login');
         Route::post('otp-verify', [AuthController::class, 'OtpVerify'])->name('otp.verify');
     });
