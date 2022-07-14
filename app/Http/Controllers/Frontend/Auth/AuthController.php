@@ -13,7 +13,7 @@ use Illuminate\Http\Response;
 
 class AuthController extends Controller
 {
-    public function signUp(LoginRequest $request)
+    public function login(LoginRequest $request)
     {
         $data = $request->validated();
         $user = User::whereStatus(1)
@@ -34,7 +34,7 @@ class AuthController extends Controller
         return $this->successResponse($response, 'OTP Sent Successfully', Response::HTTP_OK);
     }
 
-    public function register(RegisterRequest $request)
+    public function signUp(RegisterRequest $request)
     {
         $data = $request->validated();
         $six_digit_random_number = random_int(100000, 999999);
