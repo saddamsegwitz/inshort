@@ -19,10 +19,11 @@ class CreatePostsTable extends Migration
             $table->string('title_en')->nullable();
             $table->mediumText('body_en')->nullable();
             $table->string('image_en')->nullable();
-            $table->string('title_tl')->nullable();
-            $table->mediumText('body_tl')->nullable();
-            $table->string('image_tl')->nullable();
-            $table->unsignedInteger('readCount')->default(0);
+            $table->string('title_te')->nullable();
+            $table->mediumText('body_te')->nullable();
+            $table->string('image_te')->nullable();
+            $table->unsignedInteger('readCount_en')->default(0);
+            $table->unsignedInteger('readCount_te')->default(0);
             $table->tinyInteger('status')->default(1)->comment('1=Enabled, 2=Disabled');
             $table->unsignedBigInteger('created_by');
             $table->timestamps();

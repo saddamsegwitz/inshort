@@ -32,6 +32,10 @@
 <script src="{{ asset('admin-dashboard/app-assets/js/scripts/pages/dashboard-analytics.js') }}"></script>
 <!-- END: Page JS-->
 
+<script src="{{ asset('admin-dashboard/app-assets/js/scripts/datatables/jquery.dataTable.min.js') }}"></script>
+<script src="{{ asset('admin-dashboard/app-assets/js/scripts/datatables/dataTable.bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin-dashboard/app-assets/js/scripts/datatables/dataTable.responsive.min.js') }}"></script>
+<script src="{{asset('admin-dashboard/app-assets/js/scripts/tinymce/tinymce.min.js') }}" referrerpolicy="origin"></script>
 
 <!-- END: Body-->
 

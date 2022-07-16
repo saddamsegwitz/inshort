@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Frontend\Auth\AuthController;
+use App\Http\Controllers\Frontend\Category\CategoryController;
+use App\Http\Controllers\Frontend\Post\PostController;
 use App\Http\Controllers\Frontend\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +18,12 @@ Route::group(['prefix' => 'v1', 'middleware' => ['jsonify']], function () {
             Route::get('profile', [UserController::class, 'profile'])->name('profile');
             Route::post('profile', [UserController::class, 'updateProfile'])->name('update.profile');
             Route::post('logout', [UserController::class, 'logout'])->name('logout');
+        });
+        Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+            Route::get('list', [CategoryController::class, 'list'])->name('list');
+        });
+        Route::group(['prefix' => 'post', 'as' => 'post.'], function (){
+            Route::get('list', [PostController::class, 'list'])->name('list');
         });
     });
 });

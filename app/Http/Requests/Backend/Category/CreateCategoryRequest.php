@@ -23,9 +23,16 @@ class CreateCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        $rules = [
+            'name_en' => 'required',
+            'image_en' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
+
+        foreach (config('app.available_locales') as $locale) {
+           $rules['name_'.$locale] = 'string';
+           $rules['image_'.$locale] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+        }
+
+        return $rules;
     }
 }

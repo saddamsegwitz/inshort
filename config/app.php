@@ -15,6 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'InshortAPP'),
 
+    'available_locales' => ['en', 'te'],
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -38,7 +39,7 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
-
+    
     'debug' => (bool) env('APP_DEBUG', false),
 
     /*

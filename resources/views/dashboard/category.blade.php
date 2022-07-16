@@ -41,8 +41,10 @@
                                                     <thead>
                                                         <tr>
                                                             <th>ID</th>
-                                                            <th>Category</th>
-                                                            <th>Image</th>
+                                                            @foreach (config('app.available_locales') as $locale)
+                                                                <th>Category {{ strtoupper($locale) }}</th>
+                                                                <th>Image {{ strtoupper($locale) }}</th>
+                                                            @endforeach
                                                             <th>Status</th>
                                                             <th>Created At</th>
                                                             <th>Action</th>
@@ -53,10 +55,14 @@
                                                             @foreach ($categories as $category)
                                                                 <tr>
                                                                     <th scope="row">{{ $category->id }}</th>
-                                                                    <td>{{ $category->name }}</td>
-                                                                    <td><img src="{{ asset('uploads/category/images/' . $category->image) }}"
-                                                                            alt="{{ $category->name }}" width="100"
-                                                                            height="100"></td>
+                                                                    <td>{{ $category->name_en }}</td>
+                                                                    <td><img src="{{ asset('uploads/category/images/' . $category->image_en) }}"
+                                                                            alt="{{ $category->name_en }}"
+                                                                            width="100" height="100"></td>
+                                                                    <td>{{ $category->name_te }}</td>
+                                                                    <td><img src="{{ asset('uploads/category/images/' . $category->image_te) }}"
+                                                                            alt="{{ $category->name_te }}"
+                                                                            width="100" height="100"></td>
                                                                     <td>{!! $category->status == 1
                                                                         ? '<badge class="badge badge-info">Active</badge>'
                                                                         : '<badge class="badge badge-warning">Inactive</badge>' !!}</td>

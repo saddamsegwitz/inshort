@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html class="loaded" lang="en" data-textdirection="ltr" style="--vh: 7.21px;">
 <!-- BEGIN: Head-->
 

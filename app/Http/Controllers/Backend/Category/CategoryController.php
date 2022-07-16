@@ -39,13 +39,15 @@ class CategoryController extends Controller
     public function store(CreateCategoryRequest $request)
     {
         $data = $request->validated();
-        $data['image'] = 'noimage.png';
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $destination = "uploads/category/images/";
-            $image_name = mt_rand() . "." . $image->getClientOriginalExtension();
-            $image->move($destination, $image_name);
-            $data['image'] = $image_name;
+        foreach (config('app.available_locales') as $locale) {
+            $data['image_'.$locale] = 'noimage_'.$locale.'.png';
+            if ($request->hasFile('image_'.$locale)) {
+                $image = $request->file('image_'.$locale);
+                $destination = "uploads/category/images/";
+                $image_name = mt_rand() . "." . $image->getClientOriginalExtension();
+                $image->move($destination, $image_name);
+                $data['image_'.$locale] = $image_name;
+            }
         }
         $category = Category::create($data);
         if ($category) {

@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::resource('/permissions', PermissionController::class);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/posts', PostController::class);
+    Route::get('posts/list', [PostController::class, 'postList'])->name('posts.list');
+    Route::post('ck-editor-image-upload', [PostController::class, 'ckEditorImageUpload'])->name('post.ck_editor_upload_image');
 });
 
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
