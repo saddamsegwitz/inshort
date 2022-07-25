@@ -39,7 +39,7 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
-    
+
     'debug' => (bool) env('APP_DEBUG', false),
 
     /*
@@ -178,6 +178,7 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Inani\Larapoll\LarapollServiceProvider::class,
     ],
 
     /*
@@ -232,7 +233,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'PollWriter' => Inani\Larapoll\PollWriterFacade::class,
     ],
 
 ];

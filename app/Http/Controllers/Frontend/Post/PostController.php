@@ -12,7 +12,7 @@ class PostController extends Controller
     public function list()
     {
         $locale = app()->getLocale();
-        $posts = Post::with('category')
+        $posts = Post::with('category', 'comments')
             ->select('id', 'category_id', 'title_' . $locale, 'body_' . $locale, 'image_' . $locale, 'created_at')
             ->whereNotNull('title_' . $locale)
             ->where('title_' . $locale, '!=', '')

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\Auth\AuthController;
 use App\Http\Controllers\Frontend\Category\CategoryController;
+use App\Http\Controllers\Frontend\Post\Comment\CommentController;
 use App\Http\Controllers\Frontend\Post\PostController;
 use App\Http\Controllers\Frontend\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,9 @@ Route::group(['prefix' => 'v1', 'middleware' => ['jsonify']], function () {
         });
         Route::group(['prefix' => 'post', 'as' => 'post.'], function (){
             Route::get('list', [PostController::class, 'list'])->name('list');
+            Route::post('comments/{post_id}', [CommentController::class, 'store'])->name('comment');
+            Route::put('{post_id}/comments/{comment_id}', [CommentController::class, 'update'])->name('comment.update');
+            Route::delete('comments/{comment_id}', [CommentController::class, 'destroy'])->name('comment.delete');
         });
     });
 });
