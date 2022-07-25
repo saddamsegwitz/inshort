@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\Auth\AuthController;
 use App\Http\Controllers\Backend\Category\CategoryController;
 use App\Http\Controllers\Backend\Dashboard\DashboardController;
 use App\Http\Controllers\Backend\Permission\PermissionController;
+use App\Http\Controllers\Backend\Poll\PollController;
 use App\Http\Controllers\Backend\Post\PostController;
 use App\Http\Controllers\Backend\Role\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -32,8 +33,9 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::resource('/permissions', PermissionController::class);
     Route::resource('/categories', CategoryController::class);
     Route::resource('/posts', PostController::class);
-    Route::get('posts/list', [PostController::class, 'postList'])->name('posts.list');
     Route::post('ck-editor-image-upload', [PostController::class, 'ckEditorImageUpload'])->name('post.ck_editor_upload_image');
+
+    Route::resource('/polls', PollController::class);
 });
 
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);

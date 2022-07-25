@@ -43,6 +43,9 @@
                 <li class=" nav-item"><a href="{{ route('categories.index') }}"><i class="feather icon-calendar"></i><span
                             class="menu-title" data-i18n="Calender">Category</span></a>
                 </li>
+                <li class=" nav-item"><a href="{{ route('polls.index') }}"><i class="feather icon-check-square"></i><span
+                    class="menu-title" data-i18n="Todo">Poll</span></a>
+        </li>
         </div>
     </div>
     <!-- END: Main Menu-->

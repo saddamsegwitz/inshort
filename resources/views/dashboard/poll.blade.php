@@ -14,13 +14,13 @@
                     <!-- users filter start -->
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Posts</h4>
+                            <h4 class="card-title">Poll</h4>
                             <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
-                            @can('permission_create', $posts)
-                                <div class="users-list-filter">
-                                    <a href="{{ route('posts.create') }}" class="btn btn-primary">Create Post</a>
-                                </div>
-                            @endcan
+                            {{-- @can('permission_create', $permissions) --}}
+                            <div class="users-list-filter">
+                                <a href="{{ route('polls.create') }}" class="btn btn-primary">Create Poll</a>
+                            </div>
+                            {{-- @endcan --}}
                         </div>
                         <div class="card-content collapse show">
                             <div class="card-body float-right">
@@ -39,32 +39,29 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="table-responsive">
-                                                <table class="table">
+                                                <table class="table table-hover mb-0">
                                                     <thead>
                                                         <tr>
-                                                            <th>#</th>
-                                                            <th>Category En</th>
-                                                            <th>Title En</th>
-                                                            <th>Body En</th>
-                                                            <th>Category Te</th>
-                                                            <th>Title Te</th>
-                                                            <th>Body Te</th>
-                                                            <th>Action</th>
+                                                            <th>ID</th>
+                                                            <th>Poll</th>
+                                                            <th>Created At</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($posts as $post)
+                                                        @if (isset($polls) && !empty($polls))
+                                                            @foreach ($polls as $poll)
+                                                                <tr>
+                                                                    <th scope="row">{{ $poll->id }}</th>
+                                                                    <td>{{ $poll->name }}</td>
+                                                                    <td>{{ $poll->guard_name }}</td>
+                                                                    <td>{{ $poll->created_at }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        @else
                                                             <tr>
-                                                                <th scope="row">{{ $post->id}}</th>
-                                                                <td>{{$post->category->name_en}}</td>
-                                                                <td>{{$post->title_en}}</td>
-                                                                <td>{{Str::words($post->body_en,4)}}</td>
-                                                                <td>{{$post->category->name_te}}</td>
-                                                                <td>{{$post->title_te}}</td>
-                                                                <td>{{Str::words($post->body_te,4)}}</td>
-                                                                <td class="btn-group"> <a href="#" class="btn btn-primary">View</a><a href="#" class="btn btn-info">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+                                                                <th>No data found</th>
                                                             </tr>
-                                                        @endforeach
+                                                        @endif
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -73,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{ $posts->links() }}
+                        {{ $polls->links() }}
                     </div>
                     <!-- Ag Grid users list section end -->
                 </section>

@@ -18,26 +18,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('category')->get();
+        $posts = Post::with('category')->latest()->paginate(20);
         return view('dashboard.post', compact('posts'));
     }
 
-
-    public function postList()
-    {
-        dd(Datatables::of(Post::get())
-            // ->addIndexColumn()
-            // ->addColumn('action', function($row){
-            //     if($row->status == '1'){
-            //         $action = '<a href="#" class="btn btn-success">Enabled</a>';
-            //     }else{
-            //         $action = '<a href="#" class="btn btn-danger">Disabled</a>';
-            //     }
-            //     return $action;
-            // })
-            // ->rawColumns(['action'])
-            ->make(true));
-    }
     /**
      * Show the form for creating a new resource.
      *
